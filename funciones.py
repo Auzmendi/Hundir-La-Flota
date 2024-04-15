@@ -2,6 +2,9 @@ import numpy as np
 import random
 import time
 import variables as var
+import os
+import platform
+
 
 def  init_tablero():
     tablero = np.full((10,10),' ')
@@ -9,6 +12,12 @@ def  init_tablero():
     tablero_maquina =  np.full((10,10),' ')
     # print(tablero)
     return tablero,tablero_oculto,tablero_maquina
+
+def limpiar_pantalla ():
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 def chequear_alrededor(tablero,barco,coordenada_init_x,coordenada_init_y):
     if coordenada_init_x!=0 and coordenada_init_y!=0:
@@ -106,6 +115,7 @@ def colocar_barco(tablero):
     return tablero
 
 def mostrar_estado(tablero):
+    limpiar_pantalla ()
     print(f'\n{tablero}')
 
 def menu_inicio():
